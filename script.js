@@ -39,14 +39,14 @@ function playRound(playerChoice, computerChoice) {
     // User Choose PAPER
     if (playerChoice == "paper") {
         if (computerChoice == "rock") {
+            record.user += 1;
             return `${playerChoice} beats ${computerChoice}. You win this round!`
         }
         else if (computerChoice == "paper") {
-            record.computer += 1;
             return "Tie"
         }
         else {
-            record.user += 1;
+            record.computer += 1;
             return `${computerChoice} beats ${playerChoice}. Computer wins this round!`
         }
     }
@@ -67,8 +67,30 @@ function playRound(playerChoice, computerChoice) {
     }
 }
 // Set the game to 5 rounds, Best 3 of 5 wins
-// Annoounce the winner of the game
+function game() {
+    // The game last 5 rounds
+    for (let i = 0; i < 5; i++) {
+        let user = getUserChoice();
+        let computer = getComputerChoice();
+        console.log(playRound(user, computer));
+        console.log(record);
+    }
+    // Anounce the winner
+    return anounceTheWinner() 
 
+}
+// Annoounce the winner of the game
+function anounceTheWinner() {
+    if (record.user > record.computer) {
+        return "The winner is YOU!"
+    }
+    else if (record.user < record.computer) {
+        return "The winner is the Computer!"
+    }
+    else {
+        return "It is a Tie!"
+    }
+}
 
 // HELPERS
 // Choose an array element randomly
@@ -77,9 +99,5 @@ function chooseArrayItem(arr) {
 }
 
 
-// Main Code
-let user = getUserChoice();
-let computer = getComputerChoice(); 
-round = playRound(user, computer);
-console.log(round);
-console.log(record);
+// Execute the code
+console.log(game());
