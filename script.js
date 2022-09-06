@@ -1,4 +1,4 @@
-// Options
+// Options and record
 const choices = ["rock", "paper", "scissors"];
 let record = {"user": 0, "computer": 0};
 
@@ -92,7 +92,7 @@ function anounceTheWinner() {
     }
 }
 
-// HELPERS
+// HELPER FUNCTIONS
 // Choose an array element randomly
 function chooseArrayItem(arr) {
     return arr[Math.floor(Math.random()*arr.length)]
