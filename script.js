@@ -100,4 +100,4 @@ function chooseArrayItem(arr) {
 
 
 // Execute the code
-console.log(game());
+//console.log(game());
