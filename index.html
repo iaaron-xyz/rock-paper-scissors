@@ -5,10 +5,56 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock, Paper and Scissors!</title>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="./style.css">    
     <!-- External JS files -->
-    <script src="./script.js"></script>
+    <script src="./script.js" defer></script>
 </head>
-<body style="background-color: black;">
+
+<body style="background-color: grey;">
     
+    <!-- Title -->
+    <h1 class="main-title">Rock, Paper and Scissors</h1>
+    
+    <!-- Cards players -->
+    <div class="players">
+        
+        <!-- Player section -->
+        <div id="user-board" class="player-board">
+            <div class="score">
+                
+            </div>
+            <div class="choices">
+
+            </div>
+            <div class="points">
+                <div id="user-1"></div>
+                <div id="user-2"></div>
+                <div id="user-3"></div>
+                <div id="user-4"></div>
+                <div id="user-5"></div>
+            </div>
+        </div>
+
+        <!-- Computer section -->
+        <div id="computer-board" class="player-board">
+            <div class="score">
+                
+            </div>
+            <div class="choices">
+
+            </div>
+            <div class="points">
+                <div id="computer-1"></div>
+                <div id="computer-2"></div>
+                <div id="computer-3"></div>
+                <div id="computer-4"></div>
+                <div id="computer-5"></div>
+            </div>
+        </div>
+        
+    </div>
+
 </body>
 </html>
