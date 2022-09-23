@@ -1,3 +1,35 @@
+body {
+    background-color: black;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
 * {
     border: 1px red solid;
+}
+
+h1 {
+    text-align: center;
+}
+
+.players {
+    display: flex;
+    justify-content:space-between;
+    padding: 20px 150px;
+}
+
+.player-info {
+    background-color: #343434;
+    width: 300px;
+}
+
+/* Style score points */
+.gray-circle {
+    background-color: #555;
+    height: 30px;
+    width: 30px;
+    border-radius: 100%;
 }
