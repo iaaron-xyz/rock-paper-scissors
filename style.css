@@ -1,35 +1,108 @@
+/* Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@500&display=swap');
+
 body {
-    background-color: black;
+    background-color: #222;
     color: white;
     display: flex;
     flex-direction: column;
-    margin-left: 20px;
-    margin-right: 20px;
-}
-
-* {
-    border: 1px red solid;
-}
-
-h1 {
     text-align: center;
+    margin: 0;
+    font-family: 'Rajdhani', sans-serif;
+}
+
+.main-title {
+    background-color: #111;
+    margin-bottom: 20px;
+    font-size: 20px;
+
+}
+.description {
+    margin-top: 0;
+    margin-bottom: 30px;
+    font-size: 20px;
 }
 
 .players {
     display: flex;
-    justify-content:space-between;
-    padding: 20px 150px;
+    justify-content: center;
 }
 
+/* Players score */
 .player-info {
-    background-color: #343434;
-    width: 300px;
+    background-color: #333;
+    width: 400px;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 10px;
 }
+#computer-board {
+    margin-left: 200px;
+}
+.score-section {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+.player-icon {
+    font-size: 70px;
+}
+.score {
+    font-size: 30px;
+    padding: 10px;
+}
+
+/* Choices */
+.choices {
+    display: flex;
+    justify-content: space-between;
+}
+.choice {
+    border: 2px solid #555;
+    width: 120px;
+    border-radius: 10px;
+}
+.choice:hover {
+    background-color: #555;
+}
+.choice .choice-icon {
+    font-size: 100px;
+    margin: auto;
+}
+
 
 /* Style score points */
-.gray-circle {
+.points {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    margin-top: 40px;
+}
+.point {
+    margin-right: 10px;
+}
+.gray-point {
     background-color: #555;
-    height: 30px;
-    width: 30px;
+    height: 40px;
+    width: 40px;
     border-radius: 100%;
 }
+/* Victory point */
+.green-point {
+    background-color: rgb(95, 224, 149);
+    height: 40px;
+    width: 40px;
+    border-radius: 100%;
+}
+
+/* round winner announcement*/
+.round-winner {
+    margin-top: 50px;
+    font-size: 40px;
+}
+
+/*Remove when screen gets smaller 
+.rm {
+    display: none;
+}
+*/

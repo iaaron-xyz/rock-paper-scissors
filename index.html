@@ -10,76 +10,99 @@
     <link rel="stylesheet" href="./style.css">    
     <!-- External JS files -->
     <script src="./script.js" defer></script>
+
+    <!-- Fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
     
     <!-- Title -->
-    <h1 class="main-title">Rock, Paper and Scissors</h1>
+    <div class="main-title">
+        <h1>Rock, Paper and Scissors</h1>
+    </div>
+    <!-- Description -->
+    <p class="description">The first to win 5 rounds is the winner of the game!</p>
     
     <!-- Cards players -->
     <div class="players">
         
         <!-- Player section -->
         <div id="user-board" class="player-info">
-            <div class="score">
-                <div>
-                    U
+            <h2 class="rm">You</h2>
+            <div class="score-section">
+                <div class="player-icon">
+                    <i class="fa-solid fa-user-astronaut"></i>
                 </div>
-                <div>
-                    Wins: N
+                <div class="score">
+                    Wins <br> 0
                 </div>
             </div>
+            <!-- Choices -->
             <div class="choices">
-                <div>
-                    R
+                <div class="choice">
+                    <p class="choice-icon">&#x270A;</p>
+                    <p class="choice-text">Rock</p>
                 </div>
-                <div>
-                    P
+                <div class="choice">
+                    <p class="choice-icon">&#x1F590;</p>
+                    <p class="choice-text">Paper</p>
                 </div>
-                <div>
-                    S
+                <div class="choice">
+                    <p class="choice-icon">&#x270C;</p>
+                    <p class="choice-text">Scissors</p>
                 </div>
             </div>
+            <!-- Points -->
             <div class="points">
-                <div id="user-1" class="gray-circle"></div>
-                <div id="user-2" class="gray-circle"></div>
-                <div id="user-3" class="gray-circle"></div>
-                <div id="user-4" class="gray-circle"></div>
-                <div id="user-5" class="gray-circle"></div>
+                <div id="user-1" class="point gray-point"></div>
+                <div id="user-2" class="point gray-point"></div>
+                <div id="user-3" class="point gray-point"></div>
+                <div id="user-4" class="point gray-point"></div>
+                <div id="user-5" class="point gray-point"></div>
             </div>
         </div>
 
         <!-- Computer section -->
         <div id="computer-board" class="player-info">
-            <div class="score">
-                <div>
-                    C
+            <h2 class="rm">The computer</h2>
+            <div class="score-section">
+                <div class="player-icon">
+                    <i class="fa-sharp fa-solid fa-robot"></i>
                 </div>
-                <div>
-                    Wins: N
+                <div class="score">
+                    Wins <br> 0
                 </div>
             </div>
+            <!-- Choices -->
             <div class="choices">
-                <div>
-                    R
+                <div class="choice">
+                    <p class="choice-icon">&#x270A;</p>
+                    <p class="choice-text">Rock</p>
                 </div>
-                <div>
-                    P
+                <div class="choice">
+                    <p class="choice-icon">&#x1F590;</p>
+                    <p class="choice-text">Paper</p>
                 </div>
-                <div>
-                    S
+                <div class="choice">
+                    <p class="choice-icon">&#x270C;</p>
+                    <p class="choice-text">Scissors</p>
                 </div>
             </div>
+            <!-- Points -->
             <div class="points">
-                <div id="computer-1" class="gray-circle"></div>
-                <div id="computer-2" class="gray-circle"></div>
-                <div id="computer-3" class="gray-circle"></div>
-                <div id="computer-4" class="gray-circle"></div>
-                <div id="computer-5" class="gray-circle"></div>
+                <div id="computer-1" class="point gray-point"></div>
+                <div id="computer-2" class="point gray-point"></div>
+                <div id="computer-3" class="point gray-point"></div>
+                <div id="computer-4" class="point gray-point"></div>
+                <div id="computer-5" class="point gray-point"></div>
             </div>
         </div>
         
+    </div>
+
+    <div class="round-winner">
+        This wins! This beats this!
     </div>
 
 </body>
