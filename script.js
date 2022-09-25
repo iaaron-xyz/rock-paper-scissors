@@ -16,72 +16,56 @@ function playRound(playerChoice, computerChoice) {
     // User Choose rock
     if (playerChoice == "rock") {
         if (computerChoice == "rock") {
-            return "Tie"
+            return ["Tie", "Tie"]
         }
         else if (computerChoice == "paper") {
             record.computer += 1;
-            return `${computerChoice} beats ${playerChoice}. Computer wins this round!`
+            return [`${computerChoice} beats ${playerChoice}. Computer wins this round!`, "computer"]
         }
         else {
             record.user += 1;
-            return `${playerChoice} beats ${computerChoice}. You win this round!`
+            return [`${playerChoice} beats ${computerChoice}. You win this round!`, "user"]
         }
     }
     // User Choose PAPER
     if (playerChoice == "paper") {
         if (computerChoice == "rock") {
             record.user += 1;
-            return `${playerChoice} beats ${computerChoice}. You win this round!`
+            return [`${playerChoice} beats ${computerChoice}. You win this round!`, "user"]
         }
         else if (computerChoice == "paper") {
-            return "Tie"
+            return ["Tie", "Tie"]
         }
         else {
             record.computer += 1;
-            return `${computerChoice} beats ${playerChoice}. Computer wins this round!`
+            return [`${computerChoice} beats ${playerChoice}. Computer wins this round!`, "computer"]
         }
     }
     // User Choose SCISSORS
     if (playerChoice == "scissors") {
         if (computerChoice == "rock") {
             record.computer += 1;
-            return `${computerChoice} beats ${playerChoice}. Computer wins this round!`
+            return [`${computerChoice} beats ${playerChoice}. Computer wins this round!`, "computer"]
         }
         else if (computerChoice == "paper") {
             record.user += 1;
-            return `${playerChoice} beats ${computerChoice}. You win this round!`
+            return [`${playerChoice} beats ${computerChoice}. You win this round!`, "user"]
         }
         else {
-            record.user += 1;
-            return "Tie"
+            return ["Tie", "Tie"]
         }
     }
 }
-// Set the game to 5 rounds, Best 3 of 5 wins
-function game() {
-    // The game last 5 rounds
-    for (let i = 0; i < 5; i++) {
-        let user = getUserChoice();
-        let computer = getComputerChoice();
-        console.log(playRound(user, computer));
-        console.log(record);
+// update score
+function updateScore(roundWinner) {
+    if (roundWinner == "user") {
+        document.getElementById(`${roundWinner}-score`).innerHTML = `Score <br> ${record.user}`;
     }
-    // Anounce the winner
-    return anounceTheWinner() 
+    else if (roundWinner == "computer") {
+        document.getElementById(`${roundWinner}-score`).innerHTML = `Score <br> ${record.computer}`;
+    }
+}
 
-}
-// Annoounce the winner of the game
-function anounceTheWinner() {
-    if (record.user > record.computer) {
-        return "The winner is YOU!"
-    }
-    else if (record.user < record.computer) {
-        return "The winner is the Computer!"
-    }
-    else {
-        return "It is a Tie!"
-    }
-}
 
 // HELPER FUNCTIONS
 // Choose an array element randomly
@@ -98,18 +82,56 @@ const userChoices = document.querySelectorAll('.choice-user');
 userChoices.forEach((choice) => {
     choice.addEventListener('click', () => {
         if (choices.includes(choice.id)) {
-            // get both hands
+            // user choice
             const user = choice.id.split("-")[0];
+            // computer choice
             const computer = getComputerChoice();
-            // Play a round
-            const currentRound = playRound(user, computer);
-            document.getElementById("round-winner").innerHTML = currentRound;
+            // Play a round 
+            const currentWinner = playRound(user, computer);
+            // Display the winner of the current round
+            document.getElementById("round-winner").innerHTML = currentWinner[0];
+            // Udate score
+            updateScore(currentWinner[1]);
+            
+            // Colors to the winner and the loser
+            if (currentWinner[1] == "user") {
+                document.querySelector(`#${user}-user`).classList.add("winner-choice");
+                document.querySelector(`#${computer}-computer`).classList.add("loser-choice");
+                // color the number of pints
+                document.querySelector(`#user-${record.user}`).classList.add("green-point");
+            }
+            else if (currentWinner[1] == "computer") {
+                document.querySelector(`#${user}-user`).classList.add("loser-choice");
+                document.querySelector(`#${computer}-computer`).classList.add("winner-choice");
+                // color the number of pints
+                document.querySelector(`#computer-${record.computer}`).classList.add("green-point");
+            }
+            else {
+                document.querySelector(`#${user}-user`).classList.add("tie-choice");
+                document.querySelector(`#${computer}-computer`).classList.add("tie-choice");
+            }
+            
+            // After S seconds remove the winner and loser classes
+            setTimeout(function(){
+                if (currentWinner[1] == "user") {
+                    document.querySelector(`#${user}-user`).classList.remove("winner-choice");
+                    document.querySelector(`#${computer}-computer`).classList.remove("loser-choice");
+                }
+                else if (currentWinner[1] == "computer") {
+                    document.querySelector(`#${user}-user`).classList.remove("loser-choice");
+                    document.querySelector(`#${computer}-computer`).classList.remove("winner-choice");
+                }
+                else {
+                    document.querySelector(`#${user}-user`).classList.remove("tie-choice");
+                    document.querySelector(`#${computer}-computer`).classList.remove("tie-choice");
+                }
+            }, 2000);
         }
         else {
-            console.error("You have 3 options: Rock, paper or Scissors!")
+            console.error("You have 3 options: Rock, paper or Scissors!");
         }
     });
-});
+}, 1);
 
 
 
