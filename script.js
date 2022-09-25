@@ -78,6 +78,16 @@ function chooseArrayItem(arr) {
  * DOM MANIPULATION
  */
 const userChoices = document.querySelectorAll('.choice-user');
+const computerScore = document.getElementById('computer-score');
+const userScore = document.getElementById('user-score');
+const roundWinner = document.getElementById('round-winner');
+
+// Get the modal
+const modal = document.getElementById("my-modal");
+const finalResult = document.querySelector(".final-result");
+const playAgain = document.querySelector(".play-again");
+// Get the <span> element that closes the modal
+const span = document.getElementsByClassName("close")[0];
 
 userChoices.forEach((choice) => {
     choice.addEventListener('click', () => {
@@ -125,16 +135,56 @@ userChoices.forEach((choice) => {
                     document.querySelector(`#${user}-user`).classList.remove("tie-choice");
                     document.querySelector(`#${computer}-computer`).classList.remove("tie-choice");
                 }
-            }, 2000);
+            }, 1500);
         }
+
+        // Actavate modal window of a finished game
+        if (record.user >= 5 || record.computer >= 5) {
+            if (record.user > record.computer) {
+                finalResult.innerHTML = "You WON! :D";
+            }
+            else {
+                finalResult.innerHTML = "You LOST! D:"
+            }
+            modal.style.display = "block";
+        }
+
         else {
             console.error("You have 3 options: Rock, paper or Scissors!");
         }
     });
-}, 1);
+});
 
+// Restart the game
+playAgain.addEventListener('click', () => {
+    // Restart the Variables
+    record.user = 0;
+    record.computer = 0;
+    
+    // DOM modification
+    // Score
+    computerScore.innerHTML = "Score <br> 0";
+    userScore.innerHTML = "Score <br> 0";
+    // text announcement
+    roundWinner.innerHTML = "Are you ready fot another GAME?!";
 
+    // Remove the green (victory) points
+    for (let i = 1; i < 6; i++) {
+        document.querySelector(`#user-${i}`).classList.remove("green-point");
+        document.querySelector(`#computer-${i}`).classList.remove("green-point");
+    }
+    // Hide modal
+    modal.style.display = "none";
+});
 
+// Hide modal
+span.addEventListener('click', () => {
+    modal.style.display = "none";
+});
 
-// Execute the code
-//console.log(game());
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
