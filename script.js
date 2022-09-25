@@ -1,24 +1,15 @@
+/*********************************************************
+ * FUNCTION DECLARATIONS
+ */
+
 // Options and record
-const choices = ["rock", "paper", "scissors"];
+const choices = ["rock-user", "paper-user", "scissors-user"];
 let record = {"user": 0, "computer": 0};
 
-
-// Ask the user choice
-function getUserChoice() {
-    // Ask and get the user choice
-    let choice = prompt("Rock, paper or scissors?").toLowerCase();
-    // Check user option exist
-    if (choices.includes(choice)) {
-        return choice;
-    }
-    else {
-        console.error("You must choose rock, paper or scissors!");
-    }
-}
 // Get computer choice
 function getComputerChoice() {
     // Choose randomly a value among those options
-    return chooseArrayItem(choices)
+    return chooseArrayItem(choices).split("-")[0]
 }
 // Play and choose the winner of the round
 function playRound(playerChoice, computerChoice) {
@@ -97,6 +88,30 @@ function anounceTheWinner() {
 function chooseArrayItem(arr) {
     return arr[Math.floor(Math.random()*arr.length)]
 }
+
+
+/*********************************************************
+ * DOM MANIPULATION
+ */
+const userChoices = document.querySelectorAll('.choice-user');
+
+userChoices.forEach((choice) => {
+    choice.addEventListener('click', () => {
+        if (choices.includes(choice.id)) {
+            // get both hands
+            const user = choice.id.split("-")[0];
+            const computer = getComputerChoice();
+            // Play a round
+            const currentRound = playRound(user, computer);
+            document.getElementById("round-winner").innerHTML = currentRound;
+        }
+        else {
+            console.error("You have 3 options: Rock, paper or Scissors!")
+        }
+    });
+});
+
+
 
 
 // Execute the code

@@ -96,7 +96,7 @@ body {
 }
 
 /* round winner announcement*/
-.round-winner {
+#round-winner {
     margin-top: 50px;
     font-size: 40px;
 }
