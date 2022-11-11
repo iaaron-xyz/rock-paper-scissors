@@ -86,26 +86,7 @@ userChoices.forEach((choice) => {
 });
 
 // Restart the game
-playAgain.addEventListener('click', () => {
-    // Restart the Variables
-    record.user = 0;
-    record.computer = 0;
-    
-    // DOM modification
-    // Score
-    computerScore.innerHTML = "Score <br> 0";
-    userScore.innerHTML = "Score <br> 0";
-    // text announcement
-    roundWinner.innerHTML = "Are you ready fot another GAME?!";
-
-    // Remove the green (victory) points
-    for (let i = 1; i < 6; i++) {
-        document.querySelector(`#user-${i}`).classList.remove("green-point");
-        document.querySelector(`#computer-${i}`).classList.remove("green-point");
-    }
-    // Hide modal
-    modal.style.display = "none";
-});
+playAgain.addEventListener('click', restarGame);
 
 // Hide modal
 span.addEventListener('click', () => {
@@ -115,7 +96,7 @@ span.addEventListener('click', () => {
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
     if (event.target == modal) {
-        modal.style.display = "none";
+        restarGame();
     }
 }
 
@@ -183,6 +164,28 @@ function updateScore(roundWinner) {
     else if (roundWinner == "computer") {
         document.getElementById(`${roundWinner}-score`).innerHTML = `Score <br> ${record.computer}`;
     }
+}
+
+// Restart Game
+function restarGame() {
+        // Restart the Variables
+        record.user = 0;
+        record.computer = 0;
+        
+        // DOM modification
+        // Score
+        computerScore.innerHTML = "Score <br> 0";
+        userScore.innerHTML = "Score <br> 0";
+        // text announcement
+        roundWinner.innerHTML = "Are you ready fot another GAME?!";
+    
+        // Remove the green (victory) points
+        for (let i = 1; i < 6; i++) {
+            document.querySelector(`#user-${i}`).classList.remove("green-point");
+            document.querySelector(`#computer-${i}`).classList.remove("green-point");
+        }
+        // Hide modal
+        modal.style.display = "none";
 }
 
 
