@@ -71,10 +71,10 @@ userChoices.forEach((choice) => {
         // Actavate modal window of a finished game
         if (record.user >= 5 || record.computer >= 5) {
             if (record.user > record.computer) {
-                finalResult.innerHTML = "You WON! :D";
+                finalResult.innerHTML = '<span style="color:rgb(73, 138, 89)">You WON! :D</span>';
             }
             else {
-                finalResult.innerHTML = "You LOST! D:"
+                finalResult.innerHTML = '<span style="color:rgb(212, 53, 53)">You LOST! D:</span>';
             }
             modal.style.display = "block";
         }
