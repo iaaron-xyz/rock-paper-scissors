@@ -65,7 +65,7 @@ userChoices.forEach((choice) => {
                     document.querySelector(`#${user}-user`).classList.remove("tie-choice");
                     document.querySelector(`#${computer}-computer`).classList.remove("tie-choice");
                 }
-            }, 1500);
+            }, 1000);
         }
 
         // Actavate modal window of a finished game
