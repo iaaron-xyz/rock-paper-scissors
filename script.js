@@ -1,82 +1,11 @@
 /*********************************************************
- * FUNCTION DECLARATIONS
+ * DOM MANIPULATION
  */
 
 // Options and record
 const choices = ["rock-user", "paper-user", "scissors-user"];
 let record = {"user": 0, "computer": 0};
 
-// Get computer choice
-function getComputerChoice() {
-    // Choose randomly a value among those options
-    return chooseArrayItem(choices).split("-")[0]
-}
-// Play and choose the winner of the round
-function playRound(playerChoice, computerChoice) {
-    // User Choose rock
-    if (playerChoice == "rock") {
-        if (computerChoice == "rock") {
-            return ["Tie", "Tie"]
-        }
-        else if (computerChoice == "paper") {
-            record.computer += 1;
-            return [`${computerChoice} beats ${playerChoice}. Computer wins this round!`, "computer"]
-        }
-        else {
-            record.user += 1;
-            return [`${playerChoice} beats ${computerChoice}. You win this round!`, "user"]
-        }
-    }
-    // User Choose PAPER
-    if (playerChoice == "paper") {
-        if (computerChoice == "rock") {
-            record.user += 1;
-            return [`${playerChoice} beats ${computerChoice}. You win this round!`, "user"]
-        }
-        else if (computerChoice == "paper") {
-            return ["Tie", "Tie"]
-        }
-        else {
-            record.computer += 1;
-            return [`${computerChoice} beats ${playerChoice}. Computer wins this round!`, "computer"]
-        }
-    }
-    // User Choose SCISSORS
-    if (playerChoice == "scissors") {
-        if (computerChoice == "rock") {
-            record.computer += 1;
-            return [`${computerChoice} beats ${playerChoice}. Computer wins this round!`, "computer"]
-        }
-        else if (computerChoice == "paper") {
-            record.user += 1;
-            return [`${playerChoice} beats ${computerChoice}. You win this round!`, "user"]
-        }
-        else {
-            return ["Tie", "Tie"]
-        }
-    }
-}
-// update score
-function updateScore(roundWinner) {
-    if (roundWinner == "user") {
-        document.getElementById(`${roundWinner}-score`).innerHTML = `Score <br> ${record.user}`;
-    }
-    else if (roundWinner == "computer") {
-        document.getElementById(`${roundWinner}-score`).innerHTML = `Score <br> ${record.computer}`;
-    }
-}
-
-
-// HELPER FUNCTIONS
-// Choose an array element randomly
-function chooseArrayItem(arr) {
-    return arr[Math.floor(Math.random()*arr.length)]
-}
-
-
-/*********************************************************
- * DOM MANIPULATION
- */
 const userChoices = document.querySelectorAll('.choice-user');
 const computerScore = document.getElementById('computer-score');
 const userScore = document.getElementById('user-score');
@@ -89,6 +18,7 @@ const playAgain = document.querySelector(".play-again");
 // Get the <span> element that closes the modal
 const span = document.getElementsByClassName("close")[0];
 
+// Main function
 userChoices.forEach((choice) => {
     choice.addEventListener('click', () => {
         if (choices.includes(choice.id)) {
@@ -187,4 +117,77 @@ window.onclick = function(event) {
     if (event.target == modal) {
         modal.style.display = "none";
     }
+}
+
+
+/*********************************************************
+ * FUNCTION DECLARATIONS
+ */
+
+// Get computer choice
+function getComputerChoice() {
+    // Choose randomly a value among those options
+    return chooseArrayItem(choices).split("-")[0]
+}
+
+// Play and choose the winner of the round
+function playRound(playerChoice, computerChoice) {
+    // User Choose rock
+    if (playerChoice == "rock") {
+        if (computerChoice == "rock") {
+            return ["Tie", "Tie"]
+        }
+        else if (computerChoice == "paper") {
+            record.computer += 1;
+            return [`${computerChoice} beats ${playerChoice}. Computer wins this round!`, "computer"]
+        }
+        else {
+            record.user += 1;
+            return [`${playerChoice} beats ${computerChoice}. You win this round!`, "user"]
+        }
+    }
+    // User Choose PAPER
+    if (playerChoice == "paper") {
+        if (computerChoice == "rock") {
+            record.user += 1;
+            return [`${playerChoice} beats ${computerChoice}. You win this round!`, "user"]
+        }
+        else if (computerChoice == "paper") {
+            return ["Tie", "Tie"]
+        }
+        else {
+            record.computer += 1;
+            return [`${computerChoice} beats ${playerChoice}. Computer wins this round!`, "computer"]
+        }
+    }
+    // User Choose SCISSORS
+    if (playerChoice == "scissors") {
+        if (computerChoice == "rock") {
+            record.computer += 1;
+            return [`${computerChoice} beats ${playerChoice}. Computer wins this round!`, "computer"]
+        }
+        else if (computerChoice == "paper") {
+            record.user += 1;
+            return [`${playerChoice} beats ${computerChoice}. You win this round!`, "user"]
+        }
+        else {
+            return ["Tie", "Tie"]
+        }
+    }
+}
+// update score
+function updateScore(roundWinner) {
+    if (roundWinner == "user") {
+        document.getElementById(`${roundWinner}-score`).innerHTML = `Score <br> ${record.user}`;
+    }
+    else if (roundWinner == "computer") {
+        document.getElementById(`${roundWinner}-score`).innerHTML = `Score <br> ${record.computer}`;
+    }
+}
+
+
+// HELPER FUNCTIONS
+// Choose an array element randomly
+function chooseArrayItem(arr) {
+    return arr[Math.floor(Math.random()*arr.length)]
 }
